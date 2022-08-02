@@ -21,11 +21,20 @@ public class BatchController {
 
     @PostMapping("/CommandDataType_StartLot")
     public @ResponseBody
-    CommonReturnType adminLogin(@RequestParam("LotSize") String username,
+    CommonReturnType startBatch(@RequestParam("LotSize") String LotSize,
                                 @RequestParam("PPID") String PPID,@RequestParam("TestStep") String TestStep,
                                 @RequestParam("LotID") String LotID,@RequestParam("fileName") String fileName,
                                 @RequestParam("reelNumStation_1") String reelNumStation_1,@RequestParam("reelNumStation_2") String reelNumStation_2) {
-        return new CommonReturnType("10003", "Wrong user name or password", null);
 
+
+
+        return new CommonReturnType("10003", "Wrong user name or password", null);
+    }
+
+    @PostMapping("/EndLot/CommandDataType_EndLot")
+    public @ResponseBody
+    CommonReturnType endBatch(@RequestParam("SummaryFileName") String SummaryFileName) {
+
+        return new CommonReturnType("10003", "Wrong user name or password", null);
     }
 }
