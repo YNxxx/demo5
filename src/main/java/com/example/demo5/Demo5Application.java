@@ -18,6 +18,7 @@ public class Demo5Application {
         long curTime3 = System.nanoTime();
         testController.test();
         System.out.println("Calendar.getInstance().getTimeInMillis()    " + Calendar.getInstance().getTimeInMillis() + " 耗时(ns)：" + (System.nanoTime() - curTime3)*1000000);
+        //yxq
     }
 
 }
