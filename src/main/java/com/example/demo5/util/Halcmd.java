@@ -7,26 +7,32 @@ import java.io.InputStreamReader;
 
 @SuppressWarnings({"all"})
 public class Halcmd {
-    public static int halcmdgets_bit(String name) throws IOException, InterruptedException {
+    public static int halcmdgets_bit(String name) {
         int resValue = -1;
         String cmd = "sudo halcmd gets " + name;
-        String s = terminalCmd(cmd);
-        if (s.equals("TRUE")) {
-            return 1;
-        } else if (s.equals("FALSE")) {
-            return 0;
+        try {
+            String s = terminalCmd(cmd);
+            if (s.equals("TRUE")) {
+                return 1;
+            } else if (s.equals("FALSE")) {
+                return 0;
+            }
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
         }
+
         return resValue;
     }
 
     //double halcmdgets_float(const char *name);
-    public static double halcmdgets_float(String name) throws IOException, InterruptedException {
+    public static double halcmdgets_float(String name)  {
         double resValue = -1;
         String cmd = "sudo halcmd gets " + name;
-        String s = terminalCmd(cmd);
+
         try {
+            String s = terminalCmd(cmd);
             resValue = Double.parseDouble(s);
-        } catch (NumberFormatException e) {
+        } catch (Exception e) {
             return -1;
         }
         return resValue;
@@ -34,13 +40,14 @@ public class Halcmd {
 
 //    int halcmdgets_s32(const char *name);
 
-    public static int halcmdgets_s32(String name) throws IOException, InterruptedException {
+    public static int halcmdgets_s32(String name)  {
         int resValue = -1;
         String cmd = "sudo halcmd gets " + name;
-        String s = terminalCmd(cmd);
+
         try {
+            String s = terminalCmd(cmd);
             resValue = Integer.parseInt(s);
-        } catch (NumberFormatException e) {
+        } catch (Exception e) {
             return -1;
         }
         return resValue;
@@ -48,85 +55,102 @@ public class Halcmd {
 
 
     //    extern int halcmdgets_u32(const char *name);
-    public static int halcmdgets_u32(String name) throws IOException, InterruptedException {
+    public static int halcmdgets_u32(String name) {
         int resValue = -1;
         String cmd = "sudo halcmd gets " + name;
-        String s = terminalCmd(cmd);
+
         try {
+            String s = terminalCmd(cmd);
             resValue = Integer.parseInt(s);
-        } catch (NumberFormatException e) {
+        } catch (Exception e) {
             return -1;
         }
         return resValue;
     }
 
     //    extern int halcmdgetp_bit(const char *name);
-    public static int halcmdgetp_bit(String name) throws IOException, InterruptedException {
+    public static int halcmdgetp_bit(String name) {
         int resValue = -1;
         String cmd = "sudo halcmd getp " + name;
-        String s = terminalCmd(cmd);
-        if (s.equals("TRUE")) {
-            return 1;
-        } else if (s.equals("FALSE")) {
-            return 0;
+        try {
+            String s = terminalCmd(cmd);
+            if (s.equals("TRUE")) {
+                return 1;
+            } else if (s.equals("FALSE")) {
+                return 0;
+            }
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
         }
+
         return resValue;
     }
 
     //    extern double halcmdgetp_float(const char *name);
-    public static double halcmdgetp_float(String name) throws IOException, InterruptedException {
+    public static double halcmdgetp_float(String name){
         double resValue = -1;
         String cmd = "sudo halcmd getp " + name;
-        String s = terminalCmd(cmd);
         try {
+        String s = terminalCmd(cmd);
             resValue = Double.parseDouble(s);
-        } catch (NumberFormatException e) {
+        } catch (Exception e) {
             return -1;
         }
         return resValue;
     }
 
     //    extern int halcmdgetp_s32(const char *name);
-    public static int halcmdgetp_s32(String name) throws IOException, InterruptedException {
+    public static int halcmdgetp_s32(String name) {
         int resValue = -1;
         String cmd = "sudo halcmd getp " + name;
-        String s = terminalCmd(cmd);
+
         try {
+            String s = terminalCmd(cmd);
             resValue = Integer.parseInt(s);
-        } catch (NumberFormatException e) {
+        } catch (Exception e) {
             return -1;
         }
         return resValue;
     }
 
 //    extern int halcmdgetp_u32(const char *name);
-    public static int halcmdgetp_u32(String name) throws IOException, InterruptedException {
+    public static int halcmdgetp_u32(String name)  {
         int resValue = -1;
         String cmd = "sudo halcmd getp " + name;
-        String s = terminalCmd(cmd);
+
         try {
+            String s = terminalCmd(cmd);
             resValue = Integer.parseInt(s);
-        } catch (NumberFormatException e) {
+        } catch (Exception e) {
             return -1;
         }
         return resValue;
     }
 
     //extern int halcmdsets(const char *name, const char *format, ...);
-    public static int halcmdsets(String name,Object object) throws IOException, InterruptedException {
+    public static int halcmdsets(String name,Object object) {
         int resValue = -1;
-        String cmd = "sudo halcmd sets " + object.toString();
-        String s = terminalCmd(cmd);
+        String cmd = "sudo halcmd sets " + name + " " +object.toString();
+        System.out.println(cmd);
+        try {
+            String s = terminalCmd(cmd);
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
         return resValue;
     }
 
 
     //extern int halcmdsetp(const char *name, const char *format, ...);
 
-    public static int halcmdsetp(String name,Object object) throws IOException, InterruptedException {
+    public static int halcmdsetp(String name,Object object) {
         int resValue = -1;
-        String cmd = "sudo halcmd setp " + object.toString();
-        String s = terminalCmd(cmd);
+        String cmd = "sudo halcmd setp " + name + " " +object.toString();
+        try {
+            String s = terminalCmd(cmd);
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
         return resValue;
     }
 
@@ -148,7 +172,7 @@ public class Halcmd {
         while ((lineStr = br.readLine()) != null) {
             result = lineStr;
         }
-        System.out.println(result + "执行的结果" + result);
+//        System.out.println(result + "执行的结果" + result);
         return result;
     }
 }

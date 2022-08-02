@@ -13,14 +13,14 @@ public class Demo5Application {
 
     public static void main(String[] args) throws Exception {
         SpringApplication.run(Demo5Application.class, args);
-        while (true) {
-            System.out.println("Please input signal name:");
-            Scanner scanner = new Scanner(System.in);
-            String next = scanner.next();
-            System.out.println("ResVal = " + Halcmd.halcmdgets_s32(next));
-
-
-        }
+//        while (true) {
+//            System.out.println("Please input signal name:");
+//            Scanner scanner = new Scanner(System.in);
+//            String next = scanner.next();
+//            System.out.println("ResVal = " + Halcmd.halcmdgets_s32(next));
+//
+//
+//        }
 
     }
 
